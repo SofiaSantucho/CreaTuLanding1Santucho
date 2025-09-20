@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
+import NavBar from './components/NavBar';
+import ItemListContainer from './components/ItemListContainer';
+import CartPage from './pages/CartPage';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <CartProvider>
+        <div className="app">
+          <NavBar />
+          <main className="container mt-4">
+            <Routes>
+              <Route 
+                path="/" 
+                element={
+                  <ItemListContainer greeting="¡Bienvenido a PetShop, todo para tus mascotas!" />
+                } 
+              />
+              <Route 
+                path="/category/:categoryId" 
+                element={
+                  <ItemListContainer greeting="Productos" />
+                } 
+              />
+              <Route path="/carrito" element={<CartPage />} />
+              <Route path="/servicios" element={<h2>Nuestros Servicios</h2>} />
+              <Route path="/contacto" element={<h2>Contacto</h2>} />
+              <Route path="*" element={<h2>Página no encontrada</h2>} />
+            </Routes>
+          </main>
+          <footer className="bg-dark text-white mt-5 py-4">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-4">
+                  <h5>PetShop</h5>
+                  <p>Todo lo que necesitas para el cuidado de tus mascotas.</p>
+                </div>
+                <div className="col-md-4">
+                  <h5>Enlaces Rápidos</h5>
+                  <ul className="list-unstyled">
+                    <li><a href="/" className="text-white">Inicio</a></li>
+                    <li><a href="/servicios" className="text-white">Servicios</a></li>
+                    <li><a href="/contacto" className="text-white">Contacto</a></li>
+                  </ul>
+                </div>
+                <div className="col-md-4">
+                  <h5>Contacto</h5>
+                  <p>Email: info@petshop.com<br />
+                  Teléfono: (123) 456-7890</p>
+                </div>
+              </div>
+              <div className="text-center mt-3">
+                <p className="mb-0">&copy; {new Date().getFullYear()} PetShop. Todos los derechos reservados.</p>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </CartProvider>
+    </Router>
+  );
 }
 
-export default App
+export default App;
