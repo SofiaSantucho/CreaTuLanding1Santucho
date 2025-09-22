@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Card, Button, Row, Col, Spinner } from 'react-bootstrap';
-import { useCart } from '../context/CartContext';
+import { useCart } from '../context/cart-context';
 import './ItemListContainer.css';
 
 const products = [

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Table, Button, Container, Row, Col, Card } from 'react-bootstrap';
-import { useCart } from '../context/CartContext';
+import { useCart } from '../context/cart-context';
 
 const CartPage = () => {
   const { cart, removeFromCart, updateQuantity, totalItems, totalPrice } = useCart();

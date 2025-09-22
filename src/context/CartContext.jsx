@@ -1,15 +1,5 @@
-import React, { createContext, useContext, useState, useCallback, useMemo } from 'react';
-
-const CartContext = createContext();
-
-// Custom hook to use the cart context
-const useCart = () => {
-  const context = useContext(CartContext);
-  if (!context) {
-    throw new Error('useCart debe ser utilizado dentro de un CartProvider');
-  }
-  return context;
-};
+import React, { useState, useCallback, useMemo } from 'react';
+import { CartContext } from './cart-context';
 
 // Cart provider component
 const CartProvider = ({ children }) => {
@@ -84,5 +74,5 @@ const CartProvider = ({ children }) => {
   );
 };
 
-export { useCart, CartProvider };
-export default CartContext;
+export { CartProvider };
+export default CartProvider;
