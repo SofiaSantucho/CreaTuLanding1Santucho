@@ -2,7 +2,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer';
 import CartPage from './pages/CartPage';
+import NotFound from './components/NotFound';
+import Contacto from './components/Contacto';
+import Servicios from './components/Servicios';
 import './App.css';
 
 function App() {
@@ -25,10 +29,11 @@ function App() {
                   <ItemListContainer greeting="Productos" />
                 } 
               />
+              <Route path="/item/:itemId" element={<ItemDetailContainer />} />
               <Route path="/carrito" element={<CartPage />} />
-              <Route path="/servicios" element={<h2>Nuestros Servicios</h2>} />
-              <Route path="/contacto" element={<h2>Contacto</h2>} />
-              <Route path="*" element={<h2>Página no encontrada</h2>} />
+              <Route path="/servicios" element={<Servicios />} />
+              <Route path="/contacto" element={<Contacto />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <footer className="bg-dark text-white mt-5 py-4">

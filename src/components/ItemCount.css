@@ -1,0 +1,54 @@
+.item-count {
+  margin: 20px 0;
+}
+
+.item-count-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+}
+
+.item-count-controls button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.item-count-controls button:hover:not(:disabled) {
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+}
+
+.item-count-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.item-count-number {
+  font-size: 1.5rem;
+  font-weight: 600;
+  min-width: 40px;
+  text-align: center;
+  color: #212529;
+}
+
+.item-count button.btn-primary {
+  font-weight: 500;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+.item-count button.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
